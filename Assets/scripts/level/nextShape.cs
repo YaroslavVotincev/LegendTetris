@@ -13,7 +13,7 @@ public class nextShape : MonoBehaviour
 
     public GameObject next;
 
-
+    public static Vector3 nextShapePos = new Vector3(16, 20, 0); 
 
 
 
@@ -53,7 +53,9 @@ public class nextShape : MonoBehaviour
 
             next.transform.Rotate(new Vector3(0, 0, 90));
 
-            next.transform.position = new Vector3(16 + isLine , 20, 0);
+            next.transform.position = nextShapePos;
+
+            next.transform.position += new Vector3(isLine, 0);
 
             next.transform.localScale = new Vector3(0.7f, 0.7f, 0f);
 

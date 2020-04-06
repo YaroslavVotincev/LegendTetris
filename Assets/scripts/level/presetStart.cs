@@ -36,11 +36,13 @@ public class presetStart : MonoBehaviour
         */
     };
 
+    public static bool rotated180 = true;
 
+    public GameObject rotatableObjects;
 
+    public GameObject controls; //16 3
 
-
-
+    
     void Awake()
     {
         if (isEnabled)
@@ -74,7 +76,32 @@ public class presetStart : MonoBehaviour
                 game.pole2[presetPole[i, 1], presetPole[i, 0]] = Instantiate(testCube, new Vector3(presetPole[i, 0], presetPole[i, 1]), Quaternion.identity);
             }
 
+            
+
         }
     }
+
+    private void Start()
+    {
+
+        if (rotated180 == true)
+        {
+            this.transform.rotation = Quaternion.Euler(0, 0, 180);
+            rotatableObjects.transform.rotation = Quaternion.Euler(0, 0, 180);
+            rotatableObjects.transform.position = new Vector3(-15, 5);
+            controls.transform.position = new Vector3(-5, 19);
+            //controls.transform.rotation = Quaternion.Euler(0,0,180);
+            foreach (Transform obj in controls.transform)
+            {
+                if (obj.GetComponent<rotationButton>() != null)
+                {
+                    obj.transform.localPosition = new Vector3(-3.56f, -4.38f);
+                    
+                }
+            }
+            nextShape.nextShapePos = new Vector3(-6, 2);
+        }
+    }
+
 
 }

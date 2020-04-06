@@ -21,7 +21,7 @@ public class game : MonoBehaviour
 
     public GameObject textScore;
 
-    public GameObject empty;
+    public GameObject empty,field;
 
     public static bool gameOver = false, poleGameOverCleared = false;
 
@@ -99,15 +99,18 @@ public class game : MonoBehaviour
                 ptrTime = Time.time;
 
                 if (poleFillGameOverCubes() == false)
+                {
                     poleGameOverCleared = true;
+                    this.GetComponent<cameraControl>().moveToGameOver();
+                }
             }
         }
-
+        /*
         else if(poleGameOverCleared==true)
         {
             this.GetComponent<cameraControl>().moveToGameOver();
         }
-
+        */
     }
 
     void shapeStoppedHandler()
@@ -129,9 +132,9 @@ public class game : MonoBehaviour
             }
             else
             {
-                Invoke("checkForLines", 0.5f);
+                Invoke("checkForLines", 0.3f);
 
-                Invoke("checkForLines", 0.7f);
+                Invoke("checkForLines", 0.6f);
 
                 Invoke("checkForLines", 0.9f);
 
@@ -172,7 +175,10 @@ public class game : MonoBehaviour
             {
 
                 if (pole[i, j] == 1)
+                {
                     pole2[i, j] = Instantiate(fill, new Vector3(j, i, 0), Quaternion.identity) as GameObject;
+                    pole2[i, j].transform.SetParent(field.transform);
+                }
 
             }
 
@@ -189,8 +195,11 @@ public class game : MonoBehaviour
             for (int j = 0; j < 12; j++)
             {
 
-                if (pole2[i, j] == null || pole2[i,j]==gameOverCube)
+                if (pole2[i, j] == null || pole2[i, j] == gameOverCube)
+                {
                     pole2[i, j] = Instantiate(empty, new Vector3(j, i, 0), Quaternion.identity) as GameObject;
+                    pole2[i, j].transform.SetParent(field.transform);
+                }
 
             }
 
@@ -224,6 +233,7 @@ public class game : MonoBehaviour
         {
             Destroy (pole2[ai, aj%12]) ;
             pole2[ai, aj%12] = Instantiate(gameOverCube, new Vector3(aj%12, ai, 0), Quaternion.identity) as GameObject;
+            pole2[ai, aj % 12].transform.SetParent(field.transform);
             if (aj % 12 == 0) ai++;
             aj++;
             return true;
