@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class game : MonoBehaviour
 {
+    public GameObject canv;
+
     public GameObject[] allshapes;
 
     public GameObject fill, gameOverCube;
@@ -158,6 +160,8 @@ public class game : MonoBehaviour
     {
 
         currentShape = Instantiate(allshapes[nextShape.id]) as GameObject;
+
+        //currentShape.transform.SetParent(canv.transform);
 
         currentShape.transform.position = new Vector3(5, 23, 0);
 

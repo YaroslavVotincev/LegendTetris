@@ -10,7 +10,6 @@ ScriptsOnlyBuild:
     - presetStart
     - retry
     - rotationButton
-    - screen
     - shadow
     - shapes
     Unity.2D.Tilemap.Editor.dll:
@@ -61,33 +60,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11418}
     - Class: 114
-      Script: {instanceID: 11546}
+      Script: {instanceID: 11548}
     - Class: 114
-      Script: {instanceID: 11618}
+      Script: {instanceID: 11620}
     - Class: 114
-      Script: {instanceID: 11732}
+      Script: {instanceID: 11734}
     - Class: 114
-      Script: {instanceID: 11786}
+      Script: {instanceID: 11788}
     - Class: 114
-      Script: {instanceID: 12032}
+      Script: {instanceID: 12034}
     - Class: 114
-      Script: {instanceID: 12138}
+      Script: {instanceID: 12140}
     - Class: 114
-      Script: {instanceID: 12282}
+      Script: {instanceID: 12284}
     - Class: 114
-      Script: {instanceID: 12452}
+      Script: {instanceID: 12454}
     - Class: 114
-      Script: {instanceID: 12500}
+      Script: {instanceID: 12502}
     - Class: 114
-      Script: {instanceID: 12686}
+      Script: {instanceID: 12688}
     - Class: 114
-      Script: {instanceID: 12712}
+      Script: {instanceID: 12714}
     - Class: 114
-      Script: {instanceID: 12902}
+      Script: {instanceID: 12904}
     - Class: 114
-      Script: {instanceID: 13096}
-    - Class: 114
-      Script: {instanceID: 25160}
+      Script: {instanceID: 13098}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -235,6 +232,12 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 9191785f5e74cb228dd403686053018e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: screen
+  - hash:
+      serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -361,7 +364,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 333bb99522c46660db1003263d36a081
+      Hash: 3f6bb1d376d191dbced2ccda1c32cf8c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: game
@@ -385,7 +388,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: ffcf3b78517772cb21a1ea9ccf8bbf3a
+      Hash: 563ac6d0dac3b4d28cc639d5161130c9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: presetStart
@@ -593,13 +596,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 9191785f5e74cb228dd403686053018e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: screen
   platform: 13
   scenePathNames:
   - Assets/Scenes/level.unity
-  playerPath: C:/Users/dance/Desktop/unity/build_1/05.apk
+  playerPath: C:/Users/dance/Desktop/unity/build_1/06.apk

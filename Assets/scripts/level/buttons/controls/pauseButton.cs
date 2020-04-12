@@ -34,8 +34,9 @@ public class pauseButton : MonoBehaviour, IPointerDownHandler
             currentButton = Instantiate(pause_button, transform.position, Quaternion.identity);
 
         }
-
+       
     }
+
 
     void Start()
     {

@@ -36,7 +36,7 @@ public class presetStart : MonoBehaviour
         */
     };
 
-    public static bool rotated180 = true;
+    public static bool rotated180 = false;
 
     public GameObject rotatableObjects;
 
