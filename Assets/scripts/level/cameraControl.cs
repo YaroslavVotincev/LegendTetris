@@ -8,11 +8,11 @@ public class cameraControl : MonoBehaviour
 
     bool needMovingToGameOver = false;
 
-    bool needMovingToGame = false;
+    bool needMovingToGameFromGameOver = false;
 
-    //10.03  x
+    //9  x
     //          начальное положение камеры
-    //11.5   y
+    //7   y
 
 
     void Start()
@@ -28,8 +28,8 @@ public class cameraControl : MonoBehaviour
         if (needMovingToGameOver)
             moveToGameOver();
 
-        if (needMovingToGame)
-            moveToGame();
+        if (needMovingToGameFromGameOver)
+            moveToGameFromGameOver();
 
     }
 
@@ -39,25 +39,22 @@ public class cameraControl : MonoBehaviour
         {
             needMovingToGameOver = true;
             transform.position += new Vector3(-cameraSpeedMovement * Time.deltaTime, 0);
+            if (transform.position.x < -62)
+                transform.position = new Vector3(-62, 7, transform.position.z);
         }
         else needMovingToGameOver = false;
     }
 
-    public void moveToGame()
+    public void moveToGameFromGameOver()
     {
-        if (transform.position.x < 9.03)
+        if (transform.position.x < 9)
         {    
-            needMovingToGame = true;
-
-            transform.position += new Vector3(cameraSpeedMovement * Time.deltaTime, 0);  
-        }
-        else if (transform.position.x >= 11.03)
-        {  
-            needMovingToGame = true;
-
-            transform.position += new Vector3( -cameraSpeedMovement * Time.deltaTime, 0);
-        }
-        else needMovingToGame = false;
+            needMovingToGameFromGameOver = true;
+            transform.position += new Vector3(cameraSpeedMovement * Time.deltaTime, 0);
+            if (transform.position.x > 9)
+                transform.position = new Vector3(9, 7, transform.position.z);
+        } 
+        else needMovingToGameFromGameOver = false;
     }
 
 }

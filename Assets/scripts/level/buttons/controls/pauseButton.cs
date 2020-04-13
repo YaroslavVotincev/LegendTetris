@@ -22,6 +22,8 @@ public class pauseButton : MonoBehaviour, IPointerDownHandler
 
             currentButton = Instantiate(play_button, transform.position, Quaternion.identity);
 
+            currentButton.transform.SetParent(this.transform);
+
         }
 
         else
@@ -33,6 +35,8 @@ public class pauseButton : MonoBehaviour, IPointerDownHandler
 
             currentButton = Instantiate(pause_button, transform.position, Quaternion.identity);
 
+            currentButton.transform.SetParent(this.transform);
+
         }
        
     }
@@ -41,5 +45,6 @@ public class pauseButton : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         currentButton = Instantiate(pause_button, transform.position, Quaternion.identity);
+        currentButton.transform.SetParent(this.transform);
     }
 }

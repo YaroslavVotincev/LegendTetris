@@ -12,7 +12,7 @@ public class retry : MonoBehaviour, IPointerDownHandler
 
         game.gameOver = false;
 
-        cam.GetComponent<cameraControl>().moveToGame();
+        cam.GetComponent<cameraControl>().moveToGameFromGameOver();
 
         cam.GetComponent<game>().poleRetryClear();
 

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class game : MonoBehaviour
 {
-    public GameObject canv;
 
     public GameObject[] allshapes;
 
@@ -106,12 +105,7 @@ public class game : MonoBehaviour
                 }
             }
         }
-        /*
-        else if(poleGameOverCleared==true)
-        {
-            this.GetComponent<cameraControl>().moveToGameOver();
-        }
-        */
+        
     }
 
     void shapeStoppedHandler()
@@ -159,8 +153,6 @@ public class game : MonoBehaviour
     {
 
         currentShape = Instantiate(allshapes[nextShape.id]) as GameObject;
-
-        //currentShape.transform.SetParent(canv.transform);
 
         currentShape.transform.position = new Vector3(5, 23, 0);
 
@@ -220,19 +212,16 @@ public class game : MonoBehaviour
                 if (pole[i, j] == 1 )
                 {
                     pole[i, j] = 0;
-
-                    Destroy(pole2[i, j]);
                 }
                 Destroy(pole2[i, j]);
             }
         }
         pole2FillingEmpty();
-        //this.GetComponent<cameraControl>().moveToGameOver();
     }
 
     bool poleFillGameOverCubes()
     {
-        if (ai<24)
+        if (ai<25)
         {
             Destroy (pole2[ai, aj%12]) ;
             pole2[ai, aj%12] = Instantiate(gameOverCube, new Vector3(aj%12, ai, 0), Quaternion.identity) as GameObject;
@@ -260,6 +249,8 @@ public class game : MonoBehaviour
             pole2[y,x] = Instantiate(fill, new Vector3(x, y, 0), Quaternion.identity) as GameObject;
 
             pole2[y, x].GetComponent<SpriteRenderer>().color = cube.GetComponent<SpriteRenderer>().color;
+
+            pole2[y, x].transform.SetParent(field.transform);
 
             pole[y,x] = 1;
 

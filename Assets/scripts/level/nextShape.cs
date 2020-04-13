@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class nextShape : MonoBehaviour
 {
+    public GameObject nextshape_frame;
 
     public static int id;
 
@@ -13,19 +14,7 @@ public class nextShape : MonoBehaviour
 
     public GameObject next;
 
-    public static Vector3 nextShapePos = new Vector3(16, 20, 0); 
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-       // id = Random.Range(0, 7);
-        
-    }
-
-
+    public static Vector3 nextShapePos = new Vector3(15f, 19, 0); 
 
     // Update is called once per frame
     void Update()
@@ -51,15 +40,15 @@ public class nextShape : MonoBehaviour
 
             next = Instantiate(allshapes[id]) as GameObject;
 
-            next.transform.Rotate(new Vector3(0, 0, 90));
-
             next.transform.position = nextShapePos;
 
-            next.transform.position += new Vector3(isLine, 0);
+            next.transform.position += new Vector3(0, -isLine);
 
             next.transform.localScale = new Vector3(0.7f, 0.7f, 0f);
 
             next.GetComponent<shapes>().enabled=false;
+
+            next.transform.SetParent(nextshape_frame.transform);
 
         }
 
