@@ -11,12 +11,16 @@ public class camera_MoveRight : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public float cameraSpeedMovement = 100f;
 
+    public float movementLenght = 80;
+
     Vector3 firstPos , normalScale;
 
     float buttonTapDecreasePercent = 0.75f;
 
     void Start()
     {
+        cam = GameObject.Find("Main Camera");
+
         normalScale = transform.localScale;
     }
 
@@ -34,13 +38,13 @@ public class camera_MoveRight : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     void moveRight()
     {
-        if ( cam.transform.position.x < 40 + firstPos.x )
+        if ( cam.transform.position.x < movementLenght + firstPos.x )
         {
             cam.transform.position += new Vector3(cameraSpeedMovement * Time.deltaTime, 0);
         }
         else
         {
-            cam.transform.position = new Vector3(40 + firstPos.x, firstPos.y, firstPos.z);
+            cam.transform.position = new Vector3(movementLenght + firstPos.x, firstPos.y, firstPos.z);
             needToMove = false;
         }
     }

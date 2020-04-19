@@ -19,7 +19,7 @@ public class presetStart : MonoBehaviour
 
     public static bool isEnabled = true;
 
-    public int[,] presetPole =
+    public static int[,] presetPole =
     {
         /*
         { 1 , 1 },
@@ -36,15 +36,17 @@ public class presetStart : MonoBehaviour
         */
     };
 
-    public static bool rotated180 = false;
+    //public static float difficulty = 1;
 
-    public GameObject rotatableObjects;
-
-    public GameObject controls; //16 3
-
+    
     
     void Awake()
     {
+        // место присваивания upmoves, nextshapeschange и тд
+
+
+
+
         if (isEnabled)
         { 
             allshapes = this.GetComponent<game>().allshapes;
@@ -84,23 +86,6 @@ public class presetStart : MonoBehaviour
     private void Start()
     {
 
-        if (rotated180 == true)
-        {
-            this.transform.rotation = Quaternion.Euler(0, 0, 180);
-            rotatableObjects.transform.rotation = Quaternion.Euler(0, 0, 180);
-            rotatableObjects.transform.position = new Vector3(-15, 5);
-            controls.transform.position = new Vector3(-5, 19);
-            //controls.transform.rotation = Quaternion.Euler(0,0,180);
-            foreach (Transform obj in controls.transform)
-            {
-                if (obj.GetComponent<rotationButton>() != null)
-                {
-                    obj.transform.localPosition = new Vector3(-3.56f, -4.38f);
-                    
-                }
-            }
-            nextShape.nextShapePos = new Vector3(-6, 2);
-        }
     }
 
 

@@ -63,7 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\level\buttons\controls\changeNextShapeButton.cs" />
     <Compile Include="Assets\scripts\level\buttons\controls\controlButtons.cs" />
     <Compile Include="Assets\scripts\level\buttons\controls\pauseButton.cs" />
     <Compile Include="Assets\scripts\level\buttons\controls\rotationButton.cs" />
@@ -76,6 +75,10 @@
     <Compile Include="Assets\scripts\level\shapes.cs" />
     <Compile Include="Assets\scripts\main_menu\camera_MoveLeft.cs" />
     <Compile Include="Assets\scripts\main_menu\camera_MoveRight.cs" />
+    <Compile Include="Assets\scripts\main_menu\settings.cs" />
+    <Compile Include="Assets\scripts\main_menu\settings\difficulty.cs" />
+    <Compile Include="Assets\scripts\main_menu\settingsData.cs" />
+    <None Include="Assets\Resources\1.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/gitrepos/LegendTetris/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

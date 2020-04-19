@@ -15,16 +15,16 @@ public class shapes : MonoBehaviour
     public Vector3 rotationPoint;
 
     public GameObject thisShadowShape, currentShadow;
-    
 
+    public static bool shadowsEnabled = true;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        shadowInst();
+        if (shadowsEnabled)
+            shadowInst();
 
     }
 
@@ -201,15 +201,18 @@ public class shapes : MonoBehaviour
 
     void shadowInst()
     {
-
-        currentShadow = Instantiate(thisShadowShape,transform.position, Quaternion.identity) as GameObject;
-
-        foreach (Transform cube in currentShadow.transform)
+        if (shadowsEnabled)
         {
+            currentShadow = Instantiate(thisShadowShape,transform.position, Quaternion.identity) as GameObject;
 
-            cube.GetComponent<SpriteRenderer>().sortingOrder = -1;
+            foreach (Transform cube in currentShadow.transform)
+            {
 
+                cube.GetComponent<SpriteRenderer>().sortingOrder = -1;
+
+            }
         }
+        
 
     }
 
