@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class game : MonoBehaviour
 {
+    public static string lvlName;
 
     public GameObject[] allshapes;
 
@@ -14,11 +16,15 @@ public class game : MonoBehaviour
 
     public static int score = 0;
 
+    public static int targetScore;
+
     float ptrTime=0;
 
     int ai = 1, aj = 1;
         
     int completedLines=0;
+
+    public static float difficulty;
 
     public GameObject textScore;
 
@@ -27,6 +33,8 @@ public class game : MonoBehaviour
     public static bool gameOver = false, poleGameOverCleared = false;
 
     public static bool activePhase = true;
+
+    public static bool exit = false;
 
     public static GameObject[,] pole2 = new GameObject[27, 12];
 
@@ -64,6 +72,8 @@ public class game : MonoBehaviour
     };
 
 
+   
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +84,18 @@ public class game : MonoBehaviour
             nextShape.id = presetStart.firstShapeid;
         }
         else nextShape.id = Random.Range(0, 7);
-
+        
+        if (presetStart.level.wasStarted == true )
+        {
+            pole = presetStart.level.pole;
+            pole2 = presetStart.level.pole2;
+            score = presetStart.level.score;
+            targetScore = presetStart.level.targetScore;
+            currentShape = presetStart.level.currentShape;
+            lvlName = presetStart.level.lvlName;
+            print(2);
+        }
+        else
         NextShape();
 
         pole2FillingEmpty();
@@ -84,6 +105,12 @@ public class game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (presetStart.begin == true)
+        {
+            Start();
+            presetStart.begin = false;
+        }
+
         if (activePhase)
         {
             if (shapes.isStopped == true)
@@ -106,8 +133,18 @@ public class game : MonoBehaviour
             }
         }
         
-    }
+        if (exit)
+        {
+            Save();
+            exit = false;
+            poleRetryClear();
+            SceneManager.LoadScene(0);
+            //Resources.UnloadUnusedAssets();
+        }
 
+
+    }
+    
     void shapeStoppedHandler()
     {
         if (gameOver == false && currentShape != null)
@@ -146,9 +183,6 @@ public class game : MonoBehaviour
 
     }
 
-
-
-
     void NextShape()
     {
 
@@ -171,7 +205,7 @@ public class game : MonoBehaviour
 
                 if (pole[i, j] == 1)
                 {
-                    pole2[i, j] = Instantiate(fill, new Vector3(j, i, 0), Quaternion.identity) as GameObject;
+                    pole2[i, j] = Instantiate(gameOverCube, new Vector3(j, i, 0), Quaternion.identity) as GameObject;
                     pole2[i, j].transform.SetParent(field.transform);
                 }
 
@@ -232,7 +266,6 @@ public class game : MonoBehaviour
         }
         return false;
     }
-
 
     void transformToFilling()
     {
@@ -321,6 +354,26 @@ public class game : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public static void Save()
+    {
+        levelSaveData data = new levelSaveData();
+
+        data.pole = pole;
+        data.pole2 = pole2;
+        data.score = score;
+        data.targetScore = targetScore;
+        data.currentShape = currentShape;
+        data.lvlName = lvlName;
+        data.wasStarted = true;
+
+        string value = JsonUtility.ToJson(data);
+
+        PlayerPrefs.SetString(lvlName, value);
+
+        PlayerPrefs.Save();
+
     }
 
 }

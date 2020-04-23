@@ -36,16 +36,46 @@ public class presetStart : MonoBehaviour
         */
     };
 
+    settingsData Settings;
+
+    public static levelSaveData level = new levelSaveData();
+
+    public static string lvlName;
+
+    public static bool begin = false;
     //public static float difficulty = 1;
 
     
+
+    void Load ()
+    {
+        string value;
+
+        value = PlayerPrefs.GetString("settings");
+
+        Settings = JsonUtility.FromJson<settingsData>(value);
+
+        if (PlayerPrefs.HasKey(lvlName))
+        {
+            value = PlayerPrefs.GetString(lvlName);
+            level = JsonUtility.FromJson<levelSaveData>(value);
+            lvlName = level.lvlName;
+        }
+        else level.wasStarted = false;
+    }
     
     void Awake()
     {
         // место присваивания upmoves, nextshapeschange и тд
+        
+        Load();
 
+        shapes.shadowsEnabled = Settings.shadowsEnabled;
+        shapes.upmoves = Settings.shapes_upmoves;
+        game.difficulty = Settings.difficulty;
+        nextShape.manualNextShapeChanges = Settings.manualNextShapeChanges;
 
-
+        
 
         if (isEnabled)
         { 
@@ -83,9 +113,14 @@ public class presetStart : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Update()
     {
-
+        if (test_enter.begin == true)
+        {
+            Awake();
+            test_enter.begin = false;
+            begin = true;
+        }
     }
 
 

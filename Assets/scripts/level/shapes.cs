@@ -8,7 +8,7 @@ public class shapes : MonoBehaviour
 
     public static float fallspeed = 1f;
 
-    public int upmoves = 2;
+    public static int upmoves = 2;
 
     public static bool isStopped = false;
 
