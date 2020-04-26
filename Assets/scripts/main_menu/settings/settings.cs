@@ -53,6 +53,7 @@ public class settings : MonoBehaviour
     {
         string key = "settings";
 
+
         settingsData data = new settingsData();
 
         data.shapes_upmoves = shapes_upmoves;
@@ -60,12 +61,19 @@ public class settings : MonoBehaviour
         data.manualNextShapeChanges = manualNextShapeChanges;
         data.shadowsEnabled = shadowsEnabled;
         data.design = design;
+        
 
         string value = JsonUtility.ToJson(data);
 
         PlayerPrefs.SetString(key, value);
 
         PlayerPrefs.Save();
+
+
+
+        //File.Create("Assets/Resources/12.txt");
+        File.AppendAllText("Assets/Resources/12.txt", value);
+        
     }
     
     void Awake()

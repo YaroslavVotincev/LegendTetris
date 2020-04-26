@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\prefs.cs" />
     <Compile Include="Assets\scripts\level\buttons\controls\controlButtons.cs" />
     <Compile Include="Assets\scripts\level\buttons\controls\pauseButton.cs" />
     <Compile Include="Assets\scripts\level\buttons\controls\rotationButton.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\scripts\level\presetStart.cs" />
     <Compile Include="Assets\scripts\level\shadow.cs" />
     <Compile Include="Assets\scripts\level\shapes.cs" />
+    <Compile Include="Assets\scripts\level\shapesList.cs" />
     <Compile Include="Assets\scripts\level\test_exit.cs" />
     <Compile Include="Assets\scripts\main_menu\camera_MoveLeft.cs" />
     <Compile Include="Assets\scripts\main_menu\camera_MoveRight.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="Assets\scripts\main_menu\settings\settingsData.cs" />
     <Compile Include="Assets\scripts\main_menu\test_enter.cs" />
     <None Include="Assets\Resources\1.txt" />
+    <None Include="Assets\Resources\12.txt" />
+    <None Include="Assets\Resources\123.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/gitrepos/LegendTetris/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

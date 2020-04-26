@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using System.IO;
 public class game : MonoBehaviour
 {
     public static string lvlName;
 
-    public GameObject[] allshapes;
+    public static GameObject[] allshapes;
 
     public GameObject fill, gameOverCube;
 
@@ -78,6 +78,7 @@ public class game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        allshapes = shapesList.allshapes;
 
         if (presetStart.isEnabled && presetStart.firstShapeid >= 0)
         {
@@ -85,19 +86,24 @@ public class game : MonoBehaviour
         }
         else nextShape.id = Random.Range(0, 7);
         
-        if (presetStart.level.wasStarted == true )
+        if (presetStart.level.wasStarted == true )              // не забыть изменять repeat
         {
-            pole = presetStart.level.pole;
-            pole2 = presetStart.level.pole2;
-            score = presetStart.level.score;
-            targetScore = presetStart.level.targetScore;
-            currentShape = presetStart.level.currentShape;
-            lvlName = presetStart.level.lvlName;
-            print(2);
-        }
+            
+            
+            
+            
+            currentShape = Instantiate(allshapes[presetStart.level.currentShapeID], new Vector3Int(presetStart.level.currentShape_x, presetStart.level.currentShape_y, 0), Quaternion.Euler(0,0,presetStart.level.currentShape_rotation));
+
+        //print(2);
+         }
         else
         NextShape();
 
+        pole = presetStart.level.fromPoleStr_ToPole();
+        poleFillingCubes();
+        score = presetStart.level.score;
+        targetScore = presetStart.level.targetScore;
+        lvlName = presetStart.level.lvlName;
         pole2FillingEmpty();
 
     }
@@ -105,11 +111,12 @@ public class game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (presetStart.begin == true)
         {
-            Start();
+            RepeatStart();
             presetStart.begin = false;
-        }
+        }*/
 
         if (activePhase)
         {
@@ -138,6 +145,7 @@ public class game : MonoBehaviour
             Save();
             exit = false;
             poleRetryClear();
+            //Resources.UnloadUnusedAssets();
             SceneManager.LoadScene(0);
             //Resources.UnloadUnusedAssets();
         }
@@ -356,15 +364,31 @@ public class game : MonoBehaviour
         return false;
     }
 
+   static int getCurrentShapeID()
+   {
+        for (int i=0; i< allshapes.Length;i++)
+        {
+            if (currentShape == allshapes[i])
+                return i;
+        }
+        return 0;
+   }
+
     public static void Save()
     {
         levelSaveData data = new levelSaveData();
 
-        data.pole = pole;
-        data.pole2 = pole2;
+        //data.pole = pole;
+        //data.pole2 = pole2;
+
+        data.poleStr = data.fromPole_ToPoleStr(pole);
         data.score = score;
         data.targetScore = targetScore;
-        data.currentShape = currentShape;
+        ///data.currentShape = currentShape;
+        data.currentShapeID = getCurrentShapeID();
+        data.currentShape_x = Mathf.RoundToInt(currentShape.transform.position.x);
+        data.currentShape_y = Mathf.RoundToInt(currentShape.transform.position.y);
+        data.currentShape_rotation = currentShape.transform.rotation.z;
         data.lvlName = lvlName;
         data.wasStarted = true;
 
@@ -374,6 +398,37 @@ public class game : MonoBehaviour
 
         PlayerPrefs.Save();
 
+        File.AppendAllText("Assets/Resources/12.txt", value);
+        File.AppendAllText("Assets/Resources/1.txt", PlayerPrefs.GetString(lvlName));
+    }
+
+    public void RepeatStart()
+    {
+        allshapes = shapesList.allshapes;
+
+        if (presetStart.isEnabled && presetStart.firstShapeid >= 0)
+        {
+            nextShape.id = presetStart.firstShapeid;
+        }
+        else nextShape.id = Random.Range(0, 7);
+
+        if (presetStart.level.wasStarted == true)              // не забыть изменять repeat
+        {
+
+            currentShape = Instantiate(allshapes[presetStart.level.currentShapeID], new Vector3Int(presetStart.level.currentShape_x, presetStart.level.currentShape_y, 0), Quaternion.Euler(0, 0, presetStart.level.currentShape_rotation));
+            //print(2);
+        }
+        else
+            NextShape();
+
+        pole = presetStart.level.fromPoleStr_ToPole();
+        poleFillingCubes();
+        score = presetStart.level.score;
+        targetScore = presetStart.level.targetScore;
+        lvlName = presetStart.level.lvlName;
+        pole2FillingEmpty();
+
+        print("repeated");
     }
 
 }

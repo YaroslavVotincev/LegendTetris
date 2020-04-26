@@ -13,4 +13,5 @@ public class settingsData
     public bool shadowsEnabled = true;
 
     public int design = 0;
+
 }

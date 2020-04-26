@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -306,14 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c0df48d354b574490d59c5deca9dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allshapes:
-  - {fileID: 8953314952163498760, guid: 5175ce12c1ace4f449d848334bdc92fa, type: 3}
-  - {fileID: 4689150561949365703, guid: 7aa1877839c1ccf4abaf74aff47f6316, type: 3}
-  - {fileID: 7146120544847587145, guid: ae4b63921754a084b8b1b97bb6b26968, type: 3}
-  - {fileID: 8411934546737686239, guid: e02607ace04eb9a4884020e2ceb5c6ec, type: 3}
-  - {fileID: 3755584905122677274, guid: 043ec4a4ab415f446afeb91f5b40f5bc, type: 3}
-  - {fileID: 8525382306205124121, guid: e1fb35b50a4472546a0fdcc0ac5f14db, type: 3}
-  - {fileID: 9863574559662336, guid: 2dc10173f1fa44949adb776a9a57a68c, type: 3}
   fill: {fileID: 5414792648846884665, guid: 025d8a6624433334891f2e3069c8a4f6, type: 3}
   gameOverCube: {fileID: 3404779290991200301, guid: 719a70bafbd2d1b4e95e9c9bce3d5316,
     type: 3}
@@ -423,6 +416,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeedMovement: 50
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc96a0f836c1ba94e897cbd6e693bc26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shp:
+  - {fileID: 8953314952163498760, guid: 5175ce12c1ace4f449d848334bdc92fa, type: 3}
+  - {fileID: 4689150561949365703, guid: 7aa1877839c1ccf4abaf74aff47f6316, type: 3}
+  - {fileID: 7146120544847587145, guid: ae4b63921754a084b8b1b97bb6b26968, type: 3}
+  - {fileID: 8411934546737686239, guid: e02607ace04eb9a4884020e2ceb5c6ec, type: 3}
+  - {fileID: 3755584905122677274, guid: 043ec4a4ab415f446afeb91f5b40f5bc, type: 3}
+  - {fileID: 8525382306205124121, guid: e1fb35b50a4472546a0fdcc0ac5f14db, type: 3}
+  - {fileID: 9863574559662336, guid: 2dc10173f1fa44949adb776a9a57a68c, type: 3}
 --- !u!1 &601552681
 GameObject:
   m_ObjectHideFlags: 0

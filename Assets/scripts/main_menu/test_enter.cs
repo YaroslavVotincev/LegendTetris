@@ -10,11 +10,14 @@ public class test_enter : MonoBehaviour
 
     private void OnMouseDown()
     {
-        presetStart.lvlName = "test";
-        SceneManager.LoadScene(1);
+        PlayerPrefs.SetString("chosen_lvl", "test");
         if (count != 0)
-            begin = true;
+            PlayerPrefs.SetInt("chosen_lvl", 1);
         count++;
+        PlayerPrefs.Save();
+        //Resources.UnloadUnusedAssets();
+        SceneManager.LoadScene(1);
+        //Resources.UnloadUnusedAssets();
     }
 
 

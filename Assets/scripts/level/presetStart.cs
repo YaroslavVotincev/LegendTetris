@@ -55,19 +55,21 @@ public class presetStart : MonoBehaviour
 
         Settings = JsonUtility.FromJson<settingsData>(value);
 
-        if (PlayerPrefs.HasKey(lvlName))
+        if (PlayerPrefs.HasKey(PlayerPrefs.GetString("chosen_lvl")))
         {
             value = PlayerPrefs.GetString(lvlName);
             level = JsonUtility.FromJson<levelSaveData>(value);
             lvlName = level.lvlName;
         }
-        else level.wasStarted = false;
+        else
+        {
+            level.wasStarted = false;
+            lvlName = PlayerPrefs.GetString("chosen_lvl");            
+        }
     }
     
     void Awake()
-    {
-        // место присваивания upmoves, nextshapeschange и тд
-        
+    {        
         Load();
 
         shapes.shadowsEnabled = Settings.shadowsEnabled;
@@ -75,53 +77,80 @@ public class presetStart : MonoBehaviour
         game.difficulty = Settings.difficulty;
         nextShape.manualNextShapeChanges = Settings.manualNextShapeChanges;
 
-        
-
         if (isEnabled)
-        { 
-            allshapes = this.GetComponent<game>().allshapes;
+        {
+            allshapes = this.GetComponent<shapesList>().shp;
 
-            for (int i = 0; i < 7; i++)
-            {
+            shapesInGame();
 
-                if (allshapes[i] == firstShape)
-                {
-                    firstShapeid = i;
-                }
-
-                if (allshapes[i] == constantShape)
-                {
-                    constantShapeid = i;
-                }
-
-            }
-
-            if (firstShapeid == -1)
-            {
-                firstShapeid = constantShapeid;
-            }
-
-            for (int i = 0; i < presetPole.GetUpperBound(0) + 1; i++)
-            {
-                game.pole[presetPole[i, 1], presetPole[i, 0]] = 1;
-
-                game.pole2[presetPole[i, 1], presetPole[i, 0]] = Instantiate(testCube, new Vector3(presetPole[i, 0], presetPole[i, 1]), Quaternion.identity);
-            }
-
-            
-
+            presetPoleFill(); 
         }
     }
+
+    void RepeatAwake()
+    {
+        Load();
+
+        shapes.shadowsEnabled = Settings.shadowsEnabled;
+        shapes.upmoves = Settings.shapes_upmoves;
+        game.difficulty = Settings.difficulty;
+        nextShape.manualNextShapeChanges = Settings.manualNextShapeChanges;
+
+        if (isEnabled)
+        {
+            allshapes = shapesList.allshapes;
+
+            shapesInGame();
+
+            presetPoleFill();
+        }
+
+        this.GetComponent<game>().RepeatStart();
+    }
+
 
     private void Update()
     {
-        if (test_enter.begin == true)
+        if (PlayerPrefs.GetInt("chosen_lvl") > 0)
         {
-            Awake();
-            test_enter.begin = false;
-            begin = true;
+            RepeatAwake();
+            PlayerPrefs.SetInt("chosen_lvl", 0);
+            PlayerPrefs.Save();
+            //begin = true;
         }
     }
 
+    void presetPoleFill()
+    {
+        for (int i = 0; i < presetPole.GetUpperBound(0) + 1; i++)
+        {
+            game.pole[presetPole[i, 1], presetPole[i, 0]] = 1;
+
+            game.pole2[presetPole[i, 1], presetPole[i, 0]] = Instantiate(testCube, new Vector3(presetPole[i, 0], presetPole[i, 1]), Quaternion.identity);
+        }
+    }
+
+    void shapesInGame()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+
+            if (allshapes[i] == firstShape)
+            {
+                firstShapeid = i;
+            }
+
+            if (allshapes[i] == constantShape)
+            {
+                constantShapeid = i;
+            }
+
+        }
+
+        if (firstShapeid == -1)
+        {
+            firstShapeid = constantShapeid;
+        }
+    }
 
 }
