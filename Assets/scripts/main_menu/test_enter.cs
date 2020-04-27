@@ -5,15 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class test_enter : MonoBehaviour
 {
-    public static bool begin = false;
-    int count = 0;
+    //public static bool begin = false;
+    
 
     private void OnMouseDown()
     {
-        PlayerPrefs.SetString("chosen_lvl", "test");
-        if (count != 0)
-            PlayerPrefs.SetInt("chosen_lvl", 1);
-        count++;
+        PlayerPrefs.SetString("chosen_lvl", "test");        
         PlayerPrefs.Save();
         //Resources.UnloadUnusedAssets();
         SceneManager.LoadScene(1);

@@ -54,22 +54,25 @@ public class presetStart : MonoBehaviour
         value = PlayerPrefs.GetString("settings");
 
         Settings = JsonUtility.FromJson<settingsData>(value);
+        string val1 = PlayerPrefs.GetString("chosen_lvl");
 
-        if (PlayerPrefs.HasKey(PlayerPrefs.GetString("chosen_lvl")))
+        if (PlayerPrefs.HasKey(val1))
         {
-            value = PlayerPrefs.GetString(lvlName);
+            value = PlayerPrefs.GetString(PlayerPrefs.GetString("chosen_lvl"));
             level = JsonUtility.FromJson<levelSaveData>(value);
             lvlName = level.lvlName;
         }
         else
         {
             level.wasStarted = false;
-            lvlName = PlayerPrefs.GetString("chosen_lvl");            
+            lvlName = PlayerPrefs.GetString("chosen_lvl");
+            print(lvlName);
         }
     }
     
     void Awake()
-    {        
+    {
+        print("awake");
         Load();
 
         shapes.shadowsEnabled = Settings.shadowsEnabled;

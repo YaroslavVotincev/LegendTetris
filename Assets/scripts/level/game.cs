@@ -14,6 +14,8 @@ public class game : MonoBehaviour
 
     public static GameObject currentShape;
 
+    public static int currentShapeID;
+
     public static int score = 0;
 
     public static int targetScore;
@@ -85,32 +87,30 @@ public class game : MonoBehaviour
             nextShape.id = presetStart.firstShapeid;
         }
         else nextShape.id = Random.Range(0, 7);
-        
+
+        currentShapeID = presetStart.level.currentShapeID;
+
         if (presetStart.level.wasStarted == true )              // не забыть изменять repeat
         {
-            
-            
-            
-            
             currentShape = Instantiate(allshapes[presetStart.level.currentShapeID], new Vector3Int(presetStart.level.currentShape_x, presetStart.level.currentShape_y, 0), Quaternion.Euler(0,0,presetStart.level.currentShape_rotation));
-
-        //print(2);
-         }
+            currentShapeID = presetStart.level.currentShapeID;
+        }
         else
-        NextShape();
+            NextShape();
 
         pole = presetStart.level.fromPoleStr_ToPole();
         poleFillingCubes();
         score = presetStart.level.score;
         targetScore = presetStart.level.targetScore;
-        lvlName = presetStart.level.lvlName;
+        lvlName = PlayerPrefs.GetString("chosen_lvl");
         pole2FillingEmpty();
-
+        Debug.Log("level loaded");
     }
 
     // Update is called once per frame
     void Update()
     {
+        textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(currentShapeID));
         /*
         if (presetStart.begin == true)
         {
@@ -145,9 +145,9 @@ public class game : MonoBehaviour
             Save();
             exit = false;
             poleRetryClear();
-            //Resources.UnloadUnusedAssets();
+            Resources.UnloadUnusedAssets();
             SceneManager.LoadScene(0);
-            //Resources.UnloadUnusedAssets();
+            Resources.UnloadUnusedAssets();
         }
 
 
@@ -194,7 +194,9 @@ public class game : MonoBehaviour
     void NextShape()
     {
 
-        currentShape = Instantiate(allshapes[nextShape.id]) as GameObject;
+        currentShapeID = nextShape.id;
+
+        currentShape = Instantiate(allshapes[currentShapeID]) as GameObject;
 
         currentShape.transform.position = new Vector3(5, 23, 0);
 
@@ -364,28 +366,14 @@ public class game : MonoBehaviour
         return false;
     }
 
-   static int getCurrentShapeID()
-   {
-        for (int i=0; i< allshapes.Length;i++)
-        {
-            if (currentShape == allshapes[i])
-                return i;
-        }
-        return 0;
-   }
-
     public static void Save()
     {
         levelSaveData data = new levelSaveData();
 
-        //data.pole = pole;
-        //data.pole2 = pole2;
-
         data.poleStr = data.fromPole_ToPoleStr(pole);
         data.score = score;
         data.targetScore = targetScore;
-        ///data.currentShape = currentShape;
-        data.currentShapeID = getCurrentShapeID();
+        data.currentShapeID = currentShapeID;
         data.currentShape_x = Mathf.RoundToInt(currentShape.transform.position.x);
         data.currentShape_y = Mathf.RoundToInt(currentShape.transform.position.y);
         data.currentShape_rotation = currentShape.transform.rotation.z;
@@ -393,17 +381,20 @@ public class game : MonoBehaviour
         data.wasStarted = true;
 
         string value = JsonUtility.ToJson(data);
-
+        print(lvlName);
+        print("level saved");
         PlayerPrefs.SetString(lvlName, value);
 
         PlayerPrefs.Save();
 
-        File.AppendAllText("Assets/Resources/12.txt", value);
+        //File.AppendAllText("Assets/Resources/12.txt", value);
         File.AppendAllText("Assets/Resources/1.txt", PlayerPrefs.GetString(lvlName));
     }
 
     public void RepeatStart()
     {
+        Debug.Log("level loaded");
+
         allshapes = shapesList.allshapes;
 
         if (presetStart.isEnabled && presetStart.firstShapeid >= 0)
@@ -414,9 +405,7 @@ public class game : MonoBehaviour
 
         if (presetStart.level.wasStarted == true)              // не забыть изменять repeat
         {
-
             currentShape = Instantiate(allshapes[presetStart.level.currentShapeID], new Vector3Int(presetStart.level.currentShape_x, presetStart.level.currentShape_y, 0), Quaternion.Euler(0, 0, presetStart.level.currentShape_rotation));
-            //print(2);
         }
         else
             NextShape();

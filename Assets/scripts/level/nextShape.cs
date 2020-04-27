@@ -27,7 +27,6 @@ public class nextShape : MonoBehaviour, IPointerDownHandler
 
         if (needToChange)
         {
-
             int isLine = 0;
 
             Destroy(next);
