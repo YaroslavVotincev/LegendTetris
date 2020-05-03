@@ -88,7 +88,7 @@ public class game : MonoBehaviour
         }
         else nextShape.id = Random.Range(0, 7);
 
-        currentShapeID = presetStart.level.currentShapeID;
+        //currentShapeID = presetStart.level.currentShapeID;
 
         if (presetStart.level.wasStarted == true )              // не забыть изменять repeat
         {
@@ -103,6 +103,7 @@ public class game : MonoBehaviour
         score = presetStart.level.score;
         targetScore = presetStart.level.targetScore;
         lvlName = PlayerPrefs.GetString("chosen_lvl");
+        textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(score));
         pole2FillingEmpty();
         Debug.Log("level loaded");
     }
@@ -110,13 +111,6 @@ public class game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(currentShapeID));
-        /*
-        if (presetStart.begin == true)
-        {
-            RepeatStart();
-            presetStart.begin = false;
-        }*/
 
         if (activePhase)
         {
@@ -376,7 +370,7 @@ public class game : MonoBehaviour
         data.currentShapeID = currentShapeID;
         data.currentShape_x = Mathf.RoundToInt(currentShape.transform.position.x);
         data.currentShape_y = Mathf.RoundToInt(currentShape.transform.position.y);
-        data.currentShape_rotation = currentShape.transform.rotation.z;
+        data.currentShape_rotation = currentShape.transform.rotation.eulerAngles.z;
         data.lvlName = lvlName;
         data.wasStarted = true;
 

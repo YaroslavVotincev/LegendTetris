@@ -24,7 +24,9 @@ public class shapes : MonoBehaviour
     void Start()
     {
         if (shadowsEnabled)
+        {
             shadowInst();
+        }
 
     }
 
@@ -203,7 +205,7 @@ public class shapes : MonoBehaviour
     {
         if (shadowsEnabled)
         {
-            currentShadow = Instantiate(thisShadowShape,transform.position, Quaternion.identity) as GameObject;
+            currentShadow = Instantiate(thisShadowShape,transform.position, transform.rotation) as GameObject;
 
             foreach (Transform cube in currentShadow.transform)
             {
