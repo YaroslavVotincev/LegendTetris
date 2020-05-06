@@ -28,7 +28,7 @@ public class game : MonoBehaviour
 
     public static float difficulty;
 
-    public GameObject textScore;
+    public GameObject textScore, textDiffScore;
 
     public GameObject empty,field;
 
@@ -104,6 +104,9 @@ public class game : MonoBehaviour
         targetScore = presetStart.level.targetScore;
         lvlName = PlayerPrefs.GetString("chosen_lvl");
         textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(score));
+
+
+        textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString(targetScore - score));
         pole2FillingEmpty();
         Debug.Log("level loaded");
     }
@@ -172,14 +175,13 @@ public class game : MonoBehaviour
 
                 Invoke("checkForLines", 0.9f);
 
-                Invoke("NextShape", 0.9f);
+                Invoke("checkScore", 0.9f);
             }
         }
 
         else
         {
             poleGameOverCleared = false;
-
             activePhase = false;
         }
 
@@ -301,60 +303,58 @@ public class game : MonoBehaviour
 
     }
 
+    void checkScore()
+    {
+        if (score >= targetScore)
+        {
+            poleGameOverCleared = true;
+            gameOver = true;
+            activePhase = false;
+            giveGravityToCubes();
+            Invoke("moveCameraToVictory", 2f);
+        }
+        else
+            NextShape();
+    }
+
+    void moveCameraToVictory()
+    {
+        this.GetComponent<cameraControl>().moveToVictory();
+    }
+
     bool checkForLines()
     {
-
         int a, i, j;
-
         for (i = 0; i < 22; i++)
         {
-
             a = 0;
-
             for (j = 1; j < 11; j++)
             {
-
                 if (pole[i, j] == 1)
                     a++;
-
             }
-
             if (a == 10)
             {
-
                 for (int k = 1; k < 11; k++)
                 {
-
                     Destroy(pole2[i, k]);
-
                 }
-
                 for (int g = i; g < 20; g++)
                 {
-
                     for (int k = 1; k < 11; k++)
                     {
-
                         pole[g, k] = pole[g + 1, k];
-
                         pole2[g, k] = pole2[g + 1, k];
-
-                        pole2[g, k].transform.position += new Vector3(0, -1, 0);
-                         
+                        pole2[g, k].transform.position += new Vector3(0, -1, 0);                       
                     }
-
                 }
-
                 completedLines++;
-
                 score += 10 * completedLines;
-
                 textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(score));
-
+                
+                textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString( (targetScore - score)* System.Convert.ToInt32((targetScore - score)>0) ));
                 pole2FillingEmpty();
-
                 return true;
-
             }
         }
         return false;
@@ -412,6 +412,18 @@ public class game : MonoBehaviour
         pole2FillingEmpty();
 
         print("repeated");
+    }
+
+    void giveGravityToCubes()
+    {
+        foreach(GameObject cube in pole2)
+        {
+            if (cube!=empty)
+            {
+                cube.AddComponent<Rigidbody2D>();
+                cube.AddComponent<BoxCollider2D>();
+            }
+        }
     }
 
 }

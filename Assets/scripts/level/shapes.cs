@@ -27,7 +27,6 @@ public class shapes : MonoBehaviour
         {
             shadowInst();
         }
-
     }
 
 
@@ -39,14 +38,10 @@ public class shapes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (isStopped == false)
         {
-
             CheckUserInput();
-
         }
-
     }
 
 
@@ -57,7 +52,6 @@ public class shapes : MonoBehaviour
 
     void CheckUserInput()
     {
-
         if ((Input.GetKeyDown(KeyCode.RightArrow) || controlButtons.right) && Time.time - fall >= 0.15f)
         {
 
@@ -168,7 +162,6 @@ public class shapes : MonoBehaviour
             Destroy(currentShadow);
 
         }
-
     }
 
 
@@ -177,10 +170,8 @@ public class shapes : MonoBehaviour
 
     bool isValidPosition(int x1, int y1)
     {
-
         foreach (Transform cube in transform)
         {
-
             int x = Mathf.RoundToInt(cube.transform.position.x) + x1;
 
             int y = Mathf.RoundToInt(cube.transform.position.y) + y1;
@@ -190,11 +181,8 @@ public class shapes : MonoBehaviour
 
             if (game.pole[y, x] == 1)
                 return false;
-
         }
-
         return true;
-
     }
 
 
@@ -206,16 +194,11 @@ public class shapes : MonoBehaviour
         if (shadowsEnabled)
         {
             currentShadow = Instantiate(thisShadowShape,transform.position, transform.rotation) as GameObject;
-
             foreach (Transform cube in currentShadow.transform)
             {
-
                 cube.GetComponent<SpriteRenderer>().sortingOrder = -1;
-
             }
-        }
-        
-
+        }        
     }
 
 
@@ -224,11 +207,8 @@ public class shapes : MonoBehaviour
 
     void shadowMove()
     {
-
         currentShadow.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-
         currentShadow.transform.rotation = transform.rotation;
-
     }
 
 }
