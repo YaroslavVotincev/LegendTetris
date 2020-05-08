@@ -28,7 +28,7 @@ public class game : MonoBehaviour
 
     public static float difficulty;
 
-    public GameObject textScore, textDiffScore;
+    public GameObject textScore, textDiffScore, textFact;
 
     public GameObject empty,field;
 
@@ -77,7 +77,6 @@ public class game : MonoBehaviour
    
 
 
-    // Start is called before the first frame update
     void Start()
     {
         allshapes = shapesList.allshapes;
@@ -90,7 +89,7 @@ public class game : MonoBehaviour
 
         //currentShapeID = presetStart.level.currentShapeID;
 
-        if (presetStart.level.wasStarted == true )              // не забыть изменять repeat
+        if (presetStart.level.wasStarted == true )              
         {
             currentShape = Instantiate(allshapes[presetStart.level.currentShapeID], new Vector3Int(presetStart.level.currentShape_x, presetStart.level.currentShape_y, 0), Quaternion.Euler(0,0,presetStart.level.currentShape_rotation));
             currentShapeID = presetStart.level.currentShapeID;
@@ -103,6 +102,7 @@ public class game : MonoBehaviour
         score = presetStart.level.score;
         targetScore = presetStart.level.targetScore;
         lvlName = PlayerPrefs.GetString("chosen_lvl");
+        print(lvlName);
         textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(score));
 
 
@@ -111,7 +111,7 @@ public class game : MonoBehaviour
         Debug.Log("level loaded");
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
 
@@ -310,6 +310,7 @@ public class game : MonoBehaviour
             poleGameOverCleared = true;
             gameOver = true;
             activePhase = false;
+            showFact();
             giveGravityToCubes();
             Invoke("moveCameraToVictory", 2f);
         }
@@ -382,7 +383,7 @@ public class game : MonoBehaviour
         PlayerPrefs.Save();
 
         //File.AppendAllText("Assets/Resources/12.txt", value);
-        File.AppendAllText("Assets/Resources/1.txt", PlayerPrefs.GetString(lvlName));
+        //File.AppendAllText("Assets/Resources/1.txt", PlayerPrefs.GetString(lvlName));
     }
 
     public void RepeatStart()
@@ -424,6 +425,39 @@ public class game : MonoBehaviour
                 cube.AddComponent<BoxCollider2D>();
             }
         }
+    }
+    
+    void showFact()
+    {
+        StreamReader fileStorage;
+        string str;
+        if (Directory.Exists("Facts") == true)
+        {
+            if (File.Exists("Facts/" + lvlName))
+            {
+                int lines = 0;
+                fileStorage = new StreamReader("Facts/" + lvlName);
+
+                while((str = fileStorage.ReadLine()) != null) 
+                    lines++;
+
+                int rnd = Random.Range(0, lines);
+                fileStorage = new StreamReader("Facts/" + lvlName);
+
+                for (int i = 0; i<lines; i++)
+                {
+                    str = fileStorage.ReadLine();
+                    if (i == rnd)
+                        break;
+                }  
+            }
+            else
+                str = "Файл с фактами отсутствует";
+        }
+        else
+            str = "Папка с фактами отсутствует";
+
+        textFact.GetComponent<Text>().text = str;
     }
 
 }

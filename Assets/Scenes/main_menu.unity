@@ -2990,7 +2990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlName: number 1
-  targetScore: 5
+  targetScore: 10
 --- !u!1001 &3664407029692599547
 PrefabInstance:
   m_ObjectHideFlags: 0

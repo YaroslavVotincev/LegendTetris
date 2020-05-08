@@ -68,13 +68,34 @@ public class settings : MonoBehaviour
         PlayerPrefs.Save();
 
         //File.Create("Assets/Resources/12.txt");
-        File.AppendAllText("Assets/Resources/12.txt", value);
-        
+        File.AppendAllText("Assets/Resources/12.txt", value);       
     }
     
     void Awake()
     {
         Load();
+        checkFactDir();
+    }
+
+    void checkFactDir()
+    {        
+        if (Directory.Exists("Facts") == false)
+        {
+            Directory.CreateDirectory("Facts");
+            TextAsset[] themes = Resources.LoadAll<TextAsset>("facts") as TextAsset[];
+            string path;
+            foreach(TextAsset subject in themes)
+            {
+                path = "Facts/" + subject.name;
+                print(path);
+                //File.Create(path);
+                
+                    //File.CreateText(path);
+                    //File.WriteAllText(path, subject.text);
+                    //File.AppendAllText(path, subject.text);
+                File.WriteAllText(path, subject.text, System.Text.Encoding.Default);
+            } 
+        }
     }
 
 }

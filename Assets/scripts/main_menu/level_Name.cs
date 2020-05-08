@@ -11,8 +11,11 @@ public class level_Name : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         PlayerPrefs.SetString("chosen_lvl", lvlName);
-        PlayerPrefs.SetInt("chosen_lvl", targetScore);
         PlayerPrefs.Save();
+        PlayerPrefs.SetInt("chosen_lvl_target_score", targetScore);
+        PlayerPrefs.Save();
+        //print(lvlName);
+        //print(PlayerPrefs.GetString("chosen_lvl"));
     }
 
 }

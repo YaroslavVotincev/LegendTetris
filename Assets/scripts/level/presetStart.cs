@@ -68,7 +68,7 @@ public class presetStart : MonoBehaviour
             lvlName = PlayerPrefs.GetString("chosen_lvl");
             print(lvlName);
         }
-        level.targetScore = PlayerPrefs.GetInt("chosen_lvl");
+        level.targetScore = PlayerPrefs.GetInt("chosen_lvl_target_score");
     }
     
     void Awake()
