@@ -83,17 +83,19 @@ public class settings : MonoBehaviour
         {
             Directory.CreateDirectory("Facts");
             TextAsset[] themes = Resources.LoadAll<TextAsset>("facts") as TextAsset[];
-            string path;
+            string path, str;
             foreach(TextAsset subject in themes)
             {
                 path = "Facts/" + subject.name;
-                print(path);
+                print(subject.text);
                 //File.Create(path);
-                
-                    //File.CreateText(path);
-                    //File.WriteAllText(path, subject.text);
-                    //File.AppendAllText(path, subject.text);
-                File.WriteAllText(path, subject.text, System.Text.Encoding.Default);
+                //File.CreateText(path);
+                //File.WriteAllText(path, subject.text);
+                //File.AppendAllText(path, subject.text);
+                //str = System.Text.Encoding.UTF8.GetString(subject.bytes);
+               // print(str);
+                //System.Text.Encoding.UTF8
+                File.WriteAllText(path, subject.text );
             } 
         }
     }

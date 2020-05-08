@@ -86,7 +86,6 @@
     <Compile Include="Assets\scripts\main_menu\settings\settingsData.cs" />
     <None Include="Assets\Resources\facts\number 2.txt" />
     <None Include="Assets\Resources\facts\number 1.txt" />
-    <None Include="Assets\Resources\123.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/gitrepos/LegendTetris/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
