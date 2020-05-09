@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class settings : MonoBehaviour
 {
@@ -14,8 +14,8 @@ public class settings : MonoBehaviour
 
     public static bool shadowsEnabled = true;
 
-    public static int design = 0;
-
+    public static string design = "";
+    
     void Load()
     {
         string key = "settings";
@@ -74,30 +74,60 @@ public class settings : MonoBehaviour
     void Awake()
     {
         Load();
-        checkFactDir();
+        //checkFactDir();
+        //StartCoroutine(LoadFromServer("https://vk.com/doc190271738_548694522?hash=63b442ac8fe2691a9f&dl=e6185b976a7dd3e2b9"));
     }
 
     void checkFactDir()
-    {        
-        if (Directory.Exists("Facts") == false)
+    {
+        string path = "/data/data/com.ULG.LegendTetris/files/Facts";
+        if (Directory.Exists(path) == false)
         {
-            Directory.CreateDirectory("Facts");
+            Directory.CreateDirectory(path);
             TextAsset[] themes = Resources.LoadAll<TextAsset>("facts") as TextAsset[];
-            string path, str;
             foreach(TextAsset subject in themes)
             {
-                path = "Facts/" + subject.name;
+                path = path + "/" + subject.name;
                 print(subject.text);
-                //File.Create(path);
-                //File.CreateText(path);
-                //File.WriteAllText(path, subject.text);
-                //File.AppendAllText(path, subject.text);
-                //str = System.Text.Encoding.UTF8.GetString(subject.bytes);
-               // print(str);
-                //System.Text.Encoding.UTF8
                 File.WriteAllText(path, subject.text );
             } 
         }
     }
+    /*
+    IEnumerator LoadFromServer(string url)
+    {
+        var request = new UnityWebRequest(url);
+        request.SendWebRequest();
+        while (request.isDone == false)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        if (!request.isHttpError && !request.isNetworkError)
+        {
+            Debug.Log(request.downloadHandler.text);
+        }        
+        request.Dispose();
+    }*/
+    /*
+    IEnumerator LoadTextFromServer(string url, Action<string> response)
+    {
+        var request = UnityWebRequest.Get(url);
+
+        yield return request.SendWebRequest();
+
+        if (!request.isHttpError && !request.isNetworkError)
+        {
+            response(uwr.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogErrorFormat("error request [{0}, {1}]", url, request.error);
+
+            response(null);
+        }
+
+        request.Dispose();
+    }*/
+
 
 }

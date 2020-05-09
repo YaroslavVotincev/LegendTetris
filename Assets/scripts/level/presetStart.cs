@@ -64,11 +64,12 @@ public class presetStart : MonoBehaviour
         }
         else
         {
-            level.wasStarted = false;
+            level = new levelSaveData();
             lvlName = PlayerPrefs.GetString("chosen_lvl");
-            print(lvlName);
+            //print(lvlName);
         }
         level.targetScore = PlayerPrefs.GetInt("chosen_lvl_target_score");
+        //print(lvlName);
     }
     
     void Awake()

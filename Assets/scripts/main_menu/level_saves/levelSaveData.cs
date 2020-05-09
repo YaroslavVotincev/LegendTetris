@@ -79,10 +79,14 @@ public class levelSaveData
 
             for (int j = 0; j < 12; j++)
             {
-                //this.pole[i, j] = System.Convert.ToByte(poleStr[i][j]);
-
-
-               charStr[j] = ( System.Convert.ToChar( poleF[i,j] ) );
+                /*
+                if (poleF[i, j] == 2)
+                    charStr[j] = '2';
+                else if (poleF[i, j] == 1)
+                    charStr[j] = '1';
+                else if (poleF[i, j] == 0)
+                    charStr[j] = '0';*/
+                charStr[j] = ( System.Convert.ToChar( poleF[i,j] ) );
             }
             //str1[i] = str[i].ToString();
             str1[i] = new string(charStr);

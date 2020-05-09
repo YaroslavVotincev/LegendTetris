@@ -147,9 +147,20 @@ public class game : MonoBehaviour
             Resources.UnloadUnusedAssets();
         }
 
+        
+        
+
+        
 
     }
     
+
+    private void OnApplicationQuit()
+    {
+        print("quit");
+        Save();
+    }
+
     void shapeStoppedHandler()
     {
         if (gameOver == false && currentShape != null)
@@ -431,18 +442,20 @@ public class game : MonoBehaviour
     {
         StreamReader fileStorage;
         string str;
-        if (Directory.Exists("Facts") == true)
+        string path = "/data/data/com.ULG.LegendTetris/files/Facts";
+        if (Directory.Exists(path) == true)
         {
-            if (File.Exists("Facts/" + lvlName))
+            path = path + "/" + lvlName;
+            if (File.Exists(path))
             {
                 int lines = 0;
-                fileStorage = new StreamReader("Facts/" + lvlName);
+                fileStorage = new StreamReader(path);
 
                 while((str = fileStorage.ReadLine()) != null) 
                     lines++;
 
                 int rnd = Random.Range(0, lines);
-                fileStorage = new StreamReader("Facts/" + lvlName);
+                fileStorage = new StreamReader(path);
 
                 for (int i = 0; i<lines; i++)
                 {

@@ -1,11 +1,25 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - NewBehaviourScript
+    - cameraControl
     - camera_MoveLeft
     - camera_MoveRight
+    - controlButtons
+    - deleteAllKeys
     - difficulty
+    - game
+    - level_Name
+    - nextShape
+    - pauseButton
+    - presetStart
+    - retry
+    - rotationButton
     - settings
+    - shadow
+    - shapes
+    - shapesList
+    - test_enter
+    - test_exit
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -29,6 +43,79 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
+    Assets/scenes/level.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11152}
+    - Class: 114
+      Script: {instanceID: 11324}
+    - Class: 114
+      Script: {instanceID: 11356}
+    - Class: 114
+      Script: {instanceID: 11420}
+    - Class: 114
+      Script: {instanceID: 11550}
+    - Class: 114
+      Script: {instanceID: 11622}
+    - Class: 114
+      Script: {instanceID: 11738}
+    - Class: 114
+      Script: {instanceID: 11792}
+    - Class: 114
+      Script: {instanceID: 11812}
+    - Class: 114
+      Script: {instanceID: 12044}
+    - Class: 114
+      Script: {instanceID: 12150}
+    - Class: 114
+      Script: {instanceID: 12258}
+    - Class: 114
+      Script: {instanceID: 12296}
+    - Class: 114
+      Script: {instanceID: 12468}
+    - Class: 114
+      Script: {instanceID: 12516}
+    - Class: 114
+      Script: {instanceID: 12728}
+    - Class: 114
+      Script: {instanceID: 12920}
+    - Class: 114
+      Script: {instanceID: 13116}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
     Assets/scenes/main_menu.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -65,19 +152,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11792}
     - Class: 114
-      Script: {instanceID: 12204}
+      Script: {instanceID: 11910}
     - Class: 114
-      Script: {instanceID: 12458}
+      Script: {instanceID: 12210}
     - Class: 114
-      Script: {instanceID: 12718}
+      Script: {instanceID: 12322}
     - Class: 114
-      Script: {instanceID: 12730}
+      Script: {instanceID: 12468}
     - Class: 114
-      Script: {instanceID: 13104}
+      Script: {instanceID: 12728}
     - Class: 114
-      Script: {instanceID: 13136}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 14126}
+      Script: {instanceID: 13044}
+    - Class: 114
+      Script: {instanceID: 13116}
+    - Class: 114
+      Script: {instanceID: 13148}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -267,7 +358,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: bf32320d67667ba2f18dd8682e482728
+      Hash: e13c2c6ce4401c51c68328e81a86ac18
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: shapes
@@ -315,6 +406,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: test_exit
+  - hash:
+      serializedVersion: 2
       Hash: b8a5e8091ab0b8861d2add371082c5e0
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -331,6 +428,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Selectable
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: deleteAllKeys
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -369,7 +472,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 9d1c62e37883c364240ee8821f6c144a
+      Hash: b7c5cb2a5184415a86cd81cc00e14346
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: game
@@ -393,6 +496,12 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 5be198916ba057aecfcf90313ad7f1f1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: shapesList
+  - hash:
+      serializedVersion: 2
       Hash: ffcf3b78517772cb21a1ea9ccf8bbf3a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -403,6 +512,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: test_enter
   - hash:
       serializedVersion: 2
       Hash: 783f593b9380cf72d0f7ebfd4a0d4bcd
@@ -447,7 +562,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 64016ddd36c118f9447acbba8de5b0be
+      Hash: b98ada69544d5862ca291413823219c6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: nextShape
@@ -531,6 +646,12 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
+      Hash: d709dcf05b2a74d0a0f9fd1bd24fd734
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: level_Name
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -601,13 +722,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: NewBehaviourScript
   platform: 13
   scenePathNames:
   - Assets/scenes/main_menu.unity
-  playerPath: C:/Users/dance/Desktop/unity/build_1/08.apk
+  - Assets/scenes/level.unity
+  playerPath: C:/Users/dance/Desktop/unity/build_1/10.apk
