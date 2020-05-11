@@ -93,10 +93,11 @@ public class shapes : MonoBehaviour
             transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
 
             if (isValidPosition(0, 0) == false)
-                transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
-
-            else
-                shadowMove();
+            { 
+                  transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+                  
+            }
+            else shadowMove();
 
             rotationButton.doRotation = false;
 
@@ -207,8 +208,12 @@ public class shapes : MonoBehaviour
 
     void shadowMove()
     {
-        currentShadow.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-        currentShadow.transform.rotation = transform.rotation;
+        if (shadowsEnabled)
+        {
+            currentShadow.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            currentShadow.transform.rotation = transform.rotation;
+        }
+        
     }
 
 }

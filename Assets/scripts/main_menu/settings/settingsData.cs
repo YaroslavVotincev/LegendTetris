@@ -12,7 +12,7 @@ public class settingsData
 
     public bool shadowsEnabled = true;
 
-    public string design = "Blue";
+    public string design = "Green";
 
 
 }

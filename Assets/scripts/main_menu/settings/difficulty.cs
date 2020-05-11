@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class difficulty : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 {
+    public bool left = false;
+    public bool right = false;
     public GameObject difficultyText;
 
     Vector3 normalScale;
@@ -15,7 +17,7 @@ public class difficulty : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
     void Start()
     {
         normalScale = transform.localScale;
-
+        difficultyText = GameObject.Find("difficultyText");
         if (settings.difficulty == 0)
             difficultyText.GetComponent<Text>().text = "Сложность: Легко";
         else if (settings.difficulty == 1)
@@ -36,7 +38,7 @@ public class difficulty : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData data)
     {
-        if (transform.rotation == Quaternion.Euler(0,0,90))
+        if (left)
         {
 
             if ( settings.difficulty == 0 )

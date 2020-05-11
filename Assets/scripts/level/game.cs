@@ -145,12 +145,7 @@ public class game : MonoBehaviour
             Resources.UnloadUnusedAssets();
             SceneManager.LoadScene(0);
             Resources.UnloadUnusedAssets();
-        }
-
-        
-        
-
-        
+        }                   
 
     }
     

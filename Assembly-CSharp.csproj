@@ -81,15 +81,18 @@
     <Compile Include="Assets\scripts\main_menu\level_saves\deleteAllKeys.cs" />
     <Compile Include="Assets\scripts\main_menu\level_saves\levelSaveData.cs" />
     <Compile Include="Assets\scripts\main_menu\level_saves\test_enter.cs" />
+    <Compile Include="Assets\scripts\main_menu\settings\button_area.cs" />
     <Compile Include="Assets\scripts\main_menu\settings\design_menu.cs" />
+    <Compile Include="Assets\scripts\main_menu\settings\design_menu_buttons.cs" />
+    <Compile Include="Assets\scripts\main_menu\settings\design_spritesReload.cs" />
     <Compile Include="Assets\scripts\main_menu\settings\difficulty.cs" />
     <Compile Include="Assets\scripts\main_menu\settings\settings.cs" />
     <Compile Include="Assets\scripts\main_menu\settings\settingsData.cs" />
+    <Compile Include="Assets\scripts\main_menu\settings\shadows_enable.cs" />
     <None Include="Assets\Resources\12.txt" />
     <None Include="Assets\Resources\123.txt" />
     <None Include="Assets\Resources\facts\number 2.txt" />
     <None Include="Assets\Resources\facts\number 1.txt" />
-    <None Include="Assets\CS - Icons\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/gitrepos/LegendTetris/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

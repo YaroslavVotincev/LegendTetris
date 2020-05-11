@@ -14,7 +14,7 @@ public class settings : MonoBehaviour
 
     public static bool shadowsEnabled = true;
 
-    public static string design = "";
+    public static string design = "Yellow";
     
     void Load()
     {
@@ -75,7 +75,7 @@ public class settings : MonoBehaviour
     {
         Load();
         //checkFactDir();
-        //StartCoroutine(LoadFromServer("https://vk.com/doc190271738_548694522?hash=63b442ac8fe2691a9f&dl=e6185b976a7dd3e2b9"));
+        //StartCoroutine(LoadFromServer(""));
     }
 
     void checkFactDir()
