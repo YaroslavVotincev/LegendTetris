@@ -66,9 +66,9 @@ public class presetStart : MonoBehaviour
         {
             level = new levelSaveData();
             lvlName = PlayerPrefs.GetString("chosen_lvl");
-            //print(lvlName);
+            level.targetScore = PlayerPrefs.GetInt("chosen_lvl_target_score");
         }
-        level.targetScore = PlayerPrefs.GetInt("chosen_lvl_target_score");
+        //level.targetScore = PlayerPrefs.GetInt("chosen_lvl_target_score");
         //print(lvlName);
     }
     

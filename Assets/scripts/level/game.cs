@@ -34,7 +34,7 @@ public class game : MonoBehaviour
 
     public static bool gameOver = false, poleGameOverCleared = false;
 
-    public static bool activePhase = true;
+    public static bool activePhase = true, victory = false;
 
     public static bool exit = false;
 
@@ -152,8 +152,12 @@ public class game : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        print("quit");
-        Save();
+        if (victory == false)
+        {
+            print("quit");
+            Save();
+        }
+        
     }
 
     void shapeStoppedHandler()
@@ -318,6 +322,7 @@ public class game : MonoBehaviour
             activePhase = false;
             showFact();
             giveGravityToCubes();
+            victorySave();
             Invoke("moveCameraToVictory", 2f);
         }
         else
@@ -390,6 +395,17 @@ public class game : MonoBehaviour
 
         //File.AppendAllText("Assets/Resources/12.txt", value);
         //File.AppendAllText("Assets/Resources/1.txt", PlayerPrefs.GetString(lvlName));
+    }
+
+    public void victorySave()
+    {
+        levelSaveData data = new levelSaveData();
+        data.lvlName = lvlName;
+        data.wasStarted = false;
+        data.attempt = presetStart.level.attempt + 1;
+        string value = JsonUtility.ToJson(data);
+        PlayerPrefs.SetString(lvlName, value);
+        PlayerPrefs.Save();
     }
 
     public void RepeatStart()

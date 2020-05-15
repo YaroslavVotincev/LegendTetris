@@ -81,6 +81,7 @@ public class design_menu : MonoBehaviour
     
     void ReloadAssets()
     {
+        //Resources.UnloadUnusedAssets();
         reseting = true;
 
         string path = "design/GUI/" + stylesEngName[id] + "/Normal/";

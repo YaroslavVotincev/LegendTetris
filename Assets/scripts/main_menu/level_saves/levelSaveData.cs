@@ -57,6 +57,8 @@ public class levelSaveData
 
     public int constantShapeid = -1;
 
+    public int attempt = 0;
+
     public byte[,] fromPoleStr_ToPole()
     {
         for (int i = 0; i < 27; i++)

@@ -16,16 +16,18 @@ public class shadows_enable : MonoBehaviour, IPointerDownHandler
         updateText();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        //shadowText = GameObject.Find("shadowText");
+        //shadowText = GameObject.Find("shadowtxt");
         shadowsEnabled = settings.shadowsEnabled;
         updateText();
     }
 
-    void updateText()
+    public void updateText()
     {
+        /*if (shadowText == null)
+            Application.Quit();*/
+
         if (shadowsEnabled)
         {
             shadowText.GetComponent<Text>().text = "Тени фигур: включены";
