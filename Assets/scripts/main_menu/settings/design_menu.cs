@@ -88,22 +88,23 @@ public class design_menu : MonoBehaviour
         //иконки
         Invoke("stopReseting", 0.1f);
         //задний фон
+        /*
         Sprite style_background =  (Sprite)(Resources.Load<Sprite>(path + "background_" + stylesEngName[id]) as Sprite);
         reloadBackGround(backGrounds[0], style_background);
         reloadBackGround(backGrounds[1], style_background);
         reloadBackGround(backGrounds[2], style_background);
-        reloadBackGround(backGrounds[3], style_background);
+        reloadBackGround(backGrounds[3], style_background);*/
 
         //цвет камеры
         GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = colors[id];
     }
-
+    /*
     void reloadBackGround(GameObject back, Sprite style_background)
     {
         back.GetComponent<SpriteRenderer>().sprite = style_background;
         back.GetComponent<SpriteRenderer>().sortingOrder = -3;
     }
-
+    */
     void colorsInit()
     {
         colors[0].a = 1f;

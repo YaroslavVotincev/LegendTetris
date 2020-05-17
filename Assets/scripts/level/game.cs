@@ -28,7 +28,7 @@ public class game : MonoBehaviour
 
     public static float difficulty;
 
-    public GameObject textScore, textDiffScore, textFact;
+    public GameObject textScore, textDiffScore, textFact, textLvlName;
 
     public GameObject empty,field;
 
@@ -103,9 +103,9 @@ public class game : MonoBehaviour
         targetScore = presetStart.level.targetScore;
         lvlName = PlayerPrefs.GetString("chosen_lvl");
         print(lvlName);
-        textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(score));
+        textScore.GetComponent<Text>().text = ("Счет: " + System.Convert.ToString(score));
 
-
+        textLvlName.GetComponent<Text>().text = PlayerPrefs.GetString("chosen_lvl_rusName");
         textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString(targetScore - score));
         pole2FillingEmpty();
         Debug.Log("level loaded");
@@ -362,7 +362,7 @@ public class game : MonoBehaviour
                 }
                 completedLines++;
                 score += 10 * completedLines;
-                textScore.GetComponent<Text>().text = ("Счёт: " + System.Convert.ToString(score));
+                textScore.GetComponent<Text>().text = ("Счет: " + System.Convert.ToString(score));
                 
                 textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString( (targetScore - score)* System.Convert.ToInt32((targetScore - score)>0) ));
                 pole2FillingEmpty();

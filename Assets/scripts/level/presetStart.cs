@@ -43,6 +43,8 @@ public class presetStart : MonoBehaviour
     public static string lvlName;
 
     public static bool begin = false;
+
+    public static string design;
     //public static float difficulty = 1;
 
     
@@ -81,6 +83,8 @@ public class presetStart : MonoBehaviour
         shapes.upmoves = Settings.shapes_upmoves;
         game.difficulty = Settings.difficulty;
         nextShape.manualNextShapeChanges = Settings.manualNextShapeChanges;
+        design_spritesReload_level.design = Settings.design;
+       // this.GetComponent<Camera>().backgroundColor = 
 
         if (isEnabled)
         {

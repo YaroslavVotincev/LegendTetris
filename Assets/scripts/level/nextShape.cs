@@ -22,7 +22,9 @@ public class nextShape : MonoBehaviour, IPointerDownHandler
 
     public static bool isManualChange;
 
-    public static Vector3 nextShapePos = new Vector3(15f, 19, 0); 
+    public  Vector3 nextShapePos = new Vector3(14.5f, 15.5f, 0);
+
+    public Vector3 nextShapeScale = new Vector3(0.7f, 0.7f,0);
 
     // Update is called once per frame
     void Update()
@@ -51,7 +53,7 @@ public class nextShape : MonoBehaviour, IPointerDownHandler
 
             next.transform.position += new Vector3(0, -isLine);
 
-            next.transform.localScale = new Vector3(0.7f, 0.7f, 0f);
+            next.transform.localScale = nextShapeScale;
 
             next.GetComponent<shapes>().enabled=false;
 
@@ -86,7 +88,7 @@ public class nextShape : MonoBehaviour, IPointerDownHandler
 
         next.transform.position += new Vector3(0, -isLine);
 
-        next.transform.localScale = new Vector3(0.7f, 0.7f, 0f);
+        next.transform.localScale = nextShapeScale;
 
         next.GetComponent<shapes>().enabled = false;
 
@@ -122,7 +124,7 @@ public class nextShape : MonoBehaviour, IPointerDownHandler
 
             next.transform.position += new Vector3(0, -isLine);
 
-            next.transform.localScale = new Vector3(0.7f, 0.7f, 0f);
+            next.transform.localScale = nextShapeScale;
 
             next.GetComponent<shapes>().enabled = false;
 

@@ -16,6 +16,7 @@ public class design_spritesReload : MonoBehaviour
         else
             nameOfSprite = this.GetComponent<Image>().sprite.name;
         path = "design/GUI/" + design_menu.stylesEngName[design_menu.id] + "/Normal/" + nameOfSprite;
+        reload();
     }
 
     public void reload()
