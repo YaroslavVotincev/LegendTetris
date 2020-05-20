@@ -89,6 +89,6 @@ public class difficulty : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
 
         settings.Save();
 
-        transform.localScale = new Vector3(transform.localScale.x * buttonTapDecreasePercent, transform.localScale.y * buttonTapDecreasePercent);
+        transform.localScale = new Vector3(normalScale.x * buttonTapDecreasePercent, normalScale.y * buttonTapDecreasePercent, normalScale.z);
     }
 }

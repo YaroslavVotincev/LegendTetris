@@ -103,10 +103,14 @@ public class game : MonoBehaviour
         targetScore = presetStart.level.targetScore;
         lvlName = PlayerPrefs.GetString("chosen_lvl");
         print(lvlName);
-        textScore.GetComponent<Text>().text = ("Счет: " + System.Convert.ToString(score));
+        if (lvlName!= "endless")
+            textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString(targetScore - score));
+        else
+            textDiffScore.GetComponent<Text>().text = ("Лучший счёт: " + PlayerPrefs.GetInt("endless_bestScore"));
 
+        textScore.GetComponent<Text>().text = ("Счет: " + System.Convert.ToString(score));
         textLvlName.GetComponent<Text>().text = PlayerPrefs.GetString("chosen_lvl_rusName");
-        textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString(targetScore - score));
+
         pole2FillingEmpty();
         Debug.Log("level loaded");
     }
@@ -320,6 +324,7 @@ public class game : MonoBehaviour
             poleGameOverCleared = true;
             gameOver = true;
             activePhase = false;
+            victory = true;
             showFact();
             giveGravityToCubes();
             victorySave();
@@ -357,14 +362,20 @@ public class game : MonoBehaviour
                     {
                         pole[g, k] = pole[g + 1, k];
                         pole2[g, k] = pole2[g + 1, k];
-                        pole2[g, k].transform.position += new Vector3(0, -1, 0);                       
+                        pole2[g, k].transform.position += new Vector3(0, -1, 0);
                     }
                 }
                 completedLines++;
                 score += 10 * completedLines;
                 textScore.GetComponent<Text>().text = ("Счет: " + System.Convert.ToString(score));
-                
-                textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString( (targetScore - score)* System.Convert.ToInt32((targetScore - score)>0) ));
+                if (lvlName != "endless")
+                    textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString((targetScore - score) * System.Convert.ToInt32((targetScore - score) > 0)));
+                else
+                {
+                    int bestEndless = PlayerPrefs.GetInt("endless_bestScore");
+                    if (score > bestEndless)
+                        textDiffScore.GetComponent<Text>().text = "Лучший счет: " + score;
+                }
                 pole2FillingEmpty();
                 return true;
             }
@@ -454,6 +465,10 @@ public class game : MonoBehaviour
         StreamReader fileStorage;
         string str;
         string path = "/data/data/com.ULG.LegendTetris/files/Facts";
+        if (Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            path = "Facts";
+        }
         if (Directory.Exists(path) == true)
         {
             path = path + "/" + lvlName;

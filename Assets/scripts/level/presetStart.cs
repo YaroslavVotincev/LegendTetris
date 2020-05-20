@@ -63,6 +63,8 @@ public class presetStart : MonoBehaviour
             value = PlayerPrefs.GetString(PlayerPrefs.GetString("chosen_lvl"));
             level = JsonUtility.FromJson<levelSaveData>(value);
             lvlName = level.lvlName;
+            if ( PlayerPrefs.GetInt("chosen_lvl_target_score") !=0 )
+                level.targetScore = PlayerPrefs.GetInt("chosen_lvl_target_score");
         }
         else
         {

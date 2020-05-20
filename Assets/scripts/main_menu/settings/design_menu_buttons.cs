@@ -26,7 +26,7 @@ public class design_menu_buttons : MonoBehaviour, IPointerUpHandler, IPointerDow
         {
             main.GetComponent<design_menu>().Right();
         }
-        transform.localScale = new Vector3(transform.localScale.x * buttonTapDecreasePercent, transform.localScale.y * buttonTapDecreasePercent);
+        transform.localScale = new Vector3(normalScale.x * buttonTapDecreasePercent, normalScale.y * buttonTapDecreasePercent, normalScale.z);
     }
 
 

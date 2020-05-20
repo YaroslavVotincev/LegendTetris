@@ -64,70 +64,36 @@ public class settings : MonoBehaviour
         string value = JsonUtility.ToJson(data);
 
         PlayerPrefs.SetString(key, value);
-
-        PlayerPrefs.Save();
-
-        //File.Create("Assets/Resources/12.txt");
-        File.AppendAllText("Assets/Resources/12.txt", value);       
+        PlayerPrefs.Save();   
     }
     
     void Awake()
-    {
+    {        
         Load();
-        //checkFactDir();
-        //StartCoroutine(LoadFromServer(""));
+        checkFactDir();
     }
 
     void checkFactDir()
     {
         string path = "/data/data/com.ULG.LegendTetris/files/Facts";
+        
+        if (Application.platform == RuntimePlatform.WindowsEditor)
+        {
+            path = "Facts";
+        }
+
         if (Directory.Exists(path) == false)
         {
             Directory.CreateDirectory(path);
             TextAsset[] themes = Resources.LoadAll<TextAsset>("facts") as TextAsset[];
+           
             foreach(TextAsset subject in themes)
             {
-                path = path + "/" + subject.name;
-                print(subject.text);
-                File.WriteAllText(path, subject.text );
+               //path = path + "/" + subject.name;
+               //print(subject.text);
+                File.WriteAllText(path + "/" + subject.name   , subject.text );
             } 
         }
     }
-    /*
-    IEnumerator LoadFromServer(string url)
-    {
-        var request = new UnityWebRequest(url);
-        request.SendWebRequest();
-        while (request.isDone == false)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        if (!request.isHttpError && !request.isNetworkError)
-        {
-            Debug.Log(request.downloadHandler.text);
-        }        
-        request.Dispose();
-    }*/
-    /*
-    IEnumerator LoadTextFromServer(string url, Action<string> response)
-    {
-        var request = UnityWebRequest.Get(url);
-
-        yield return request.SendWebRequest();
-
-        if (!request.isHttpError && !request.isNetworkError)
-        {
-            response(uwr.downloadHandler.text);
-        }
-        else
-        {
-            Debug.LogErrorFormat("error request [{0}, {1}]", url, request.error);
-
-            response(null);
-        }
-
-        request.Dispose();
-    }*/
-
 
 }

@@ -10,11 +10,11 @@ ScriptsOnlyBuild:
     - design_menu
     - design_menu_buttons
     - design_spritesReload
+    - design_spritesReload_level
     - difficulty
     - game
     - level_Name
     - nextShape
-    - pauseButton
     - presetStart
     - retry
     - rotationButton
@@ -68,39 +68,39 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11154}
+      Script: {instanceID: 11152}
     - Class: 114
-      Script: {instanceID: 11328}
+      Script: {instanceID: 11326}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 11358}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11554}
+      Script: {instanceID: 11624}
     - Class: 114
-      Script: {instanceID: 11626}
+      Script: {instanceID: 11740}
     - Class: 114
-      Script: {instanceID: 11742}
+      Script: {instanceID: 11794}
     - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11814}
     - Class: 114
-      Script: {instanceID: 11816}
+      Script: {instanceID: 12048}
     - Class: 114
-      Script: {instanceID: 12050}
+      Script: {instanceID: 12154}
     - Class: 114
-      Script: {instanceID: 12156}
+      Script: {instanceID: 12264}
     - Class: 114
-      Script: {instanceID: 12266}
+      Script: {instanceID: 12302}
     - Class: 114
-      Script: {instanceID: 12304}
+      Script: {instanceID: 12474}
     - Class: 114
-      Script: {instanceID: 12476}
+      Script: {instanceID: 12522}
     - Class: 114
-      Script: {instanceID: 12524}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 12738}
+      Script: {instanceID: 12928}
     - Class: 114
-      Script: {instanceID: 12930}
+      Script: {instanceID: 12960}
     - Class: 114
       Script: {instanceID: 13126}
     - Class: 115
@@ -143,39 +143,39 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11154}
+      Script: {instanceID: 11152}
     - Class: 114
-      Script: {instanceID: 11242}
+      Script: {instanceID: 11240}
     - Class: 114
-      Script: {instanceID: 11262}
+      Script: {instanceID: 11260}
     - Class: 114
-      Script: {instanceID: 11328}
+      Script: {instanceID: 11326}
     - Class: 114
-      Script: {instanceID: 11370}
+      Script: {instanceID: 11368}
     - Class: 114
-      Script: {instanceID: 11508}
+      Script: {instanceID: 11506}
     - Class: 114
-      Script: {instanceID: 11740}
+      Script: {instanceID: 11738}
     - Class: 114
-      Script: {instanceID: 11796}
+      Script: {instanceID: 11794}
     - Class: 114
-      Script: {instanceID: 11914}
+      Script: {instanceID: 11912}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11972}
     - Class: 114
-      Script: {instanceID: 12162}
+      Script: {instanceID: 12160}
     - Class: 114
-      Script: {instanceID: 12218}
+      Script: {instanceID: 12216}
     - Class: 114
-      Script: {instanceID: 12330}
+      Script: {instanceID: 12328}
     - Class: 114
-      Script: {instanceID: 12476}
+      Script: {instanceID: 12474}
     - Class: 114
-      Script: {instanceID: 12552}
+      Script: {instanceID: 12550}
     - Class: 114
-      Script: {instanceID: 12738}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 12750}
+      Script: {instanceID: 12748}
     - Class: 114
       Script: {instanceID: 13054}
     - Class: 114
@@ -499,7 +499,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: b7c5cb2a5184415a86cd81cc00e14346
+      Hash: d710838bcc4d05e07bb57da855099237
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: game
@@ -595,7 +595,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: b98ada69544d5862ca291413823219c6
+      Hash: 3912944d3d33d868810dc454bcb9afc8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: nextShape
@@ -659,6 +659,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: cameraControl
+  - hash:
+      serializedVersion: 2
+      Hash: 6059f9b8098f6840886604f9b0dd54d7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: design_spritesReload_level
   - hash:
       serializedVersion: 2
       Hash: df434544c9f7b33d1cc7e635b180d279
@@ -771,4 +777,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/scenes/main_menu.unity
   - Assets/scenes/level.unity
-  playerPath: C:/Users/dance/Desktop/unity/build_1/12.apk
+  playerPath: C:/Users/dance/Desktop/unity/build_1/13.apk
