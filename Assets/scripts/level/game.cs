@@ -106,9 +106,13 @@ public class game : MonoBehaviour
         if (lvlName!= "endless")
             textDiffScore.GetComponent<Text>().text = ("До цели: " + System.Convert.ToString(targetScore - score));
         else
-            textDiffScore.GetComponent<Text>().text = ("Лучший счёт: " + PlayerPrefs.GetInt("endless_bestScore"));
+            textDiffScore.GetComponent<Text>().text = ("Лучший счет: " + PlayerPrefs.GetInt("endless_bestScore"));
 
         textScore.GetComponent<Text>().text = ("Счет: " + System.Convert.ToString(score));
+
+        GameObject.Find("score_gameover").GetComponent<Text>().text = textScore.GetComponent<Text>().text;
+        GameObject.Find("score_difference_gameover").GetComponent<Text>().text = textDiffScore.GetComponent<Text>().text;
+
         textLvlName.GetComponent<Text>().text = PlayerPrefs.GetString("chosen_lvl_rusName");
 
         pole2FillingEmpty();
@@ -319,7 +323,7 @@ public class game : MonoBehaviour
 
     void checkScore()
     {
-        if (score >= targetScore)
+        if (score >= targetScore && lvlName != "endless")
         {
             poleGameOverCleared = true;
             gameOver = true;
@@ -376,6 +380,10 @@ public class game : MonoBehaviour
                     if (score > bestEndless)
                         textDiffScore.GetComponent<Text>().text = "Лучший счет: " + score;
                 }
+
+                GameObject.Find("score_gameover").GetComponent<Text>().text = textScore.GetComponent<Text>().text;
+                GameObject.Find("score_difference_gameover").GetComponent<Text>().text = textDiffScore.GetComponent<Text>().text;
+
                 pole2FillingEmpty();
                 return true;
             }
