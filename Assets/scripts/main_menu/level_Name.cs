@@ -48,7 +48,7 @@ public class level_Name : MonoBehaviour, IPointerDownHandler
     void updateText()
     {
         //lvlNameText.GetComponent<Text>().text = lvlName;
-        targetScoreText.GetComponent<Text>().text = "Цель: " +targetScore;
+        targetScoreText.GetComponent<Text>().text = "Цель: " +targetScore+" очков";
     }
 
 

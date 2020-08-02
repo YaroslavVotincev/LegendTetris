@@ -91,10 +91,13 @@
     <Compile Include="Assets\scripts\main_menu\settings\settingsData.cs" />
     <Compile Include="Assets\scripts\main_menu\settings\shadows_enable.cs" />
     <Compile Include="Assets\scripts\main_menu\test_StartUp.cs" />
+    <None Include="Assets\Resources\facts\it.txt" />
     <None Include="Assets\Resources\facts\endless.txt" />
     <None Include="Assets\Resources\123.txt" />
     <None Include="Assets\Resources\facts\number 2.txt" />
     <None Include="Assets\Resources\facts\number 1.txt" />
+    <None Include="Assets\Resources\facts\astronomy.txt" />
+    <None Include="Assets\Resources\facts\biology.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/gitrepos/LegendTetris/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
